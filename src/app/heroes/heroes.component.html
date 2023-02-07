@@ -1,0 +1,23 @@
+<!-- <div *ngIf="selectedHero != null"> -->
+
+<!-- Lista -->
+
+
+
+<div class="flex justify-center">
+  <h2 class="text-3xl">Mis héroes</h2>
+</div>
+
+<ul class=" grid grid-cols-4 gap-5">
+
+<li *ngFor="let heroeDeLaLista of heroes | paginate: { itemsPerPage: 20, currentPage: p }" class="bg-blue-200 flex  h-16 p-1 pr-2 rounded-md">
+
+    <a routerLink="/detail/{{heroeDeLaLista.id}}" class="flex gap-1 items-center">
+      <p class="bg-blue-500">{{heroeDeLaLista.id}}:</p>
+      <p class="bg-blue-300"> {{heroeDeLaLista.name}}</p>
+    </a>
+
+  </li>
+</ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+

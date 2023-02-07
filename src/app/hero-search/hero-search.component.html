@@ -1,0 +1,13 @@
+<div>
+  <label for="inputSearch">Buscar por nombre</label>
+  <input type="text" id="inputSearch" #inputSearch (input)="search(inputSearch.value)">
+  <ul>
+  <!-- con el | async le decimos al ngfor que heroesFound$ es un observable -->
+    <li *ngFor="let hero of heroesFound$ | async">
+      <a routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+
+  </ul>
+</div>

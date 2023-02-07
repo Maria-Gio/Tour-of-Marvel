@@ -1,0 +1,10 @@
+<div *ngIf="selectedHero">
+  <h1>{{selectedHero.name | uppercase}}</h1>
+
+  <img [src]="image" alt="">
+  <p>nombre: <input type="text" [(ngModel)]="selectedHero.name"></p>
+  <p>id: {{selectedHero.id}}</p>
+</div>
+<div class="flex gap-3">
+  <button (click)="irPatras()">Back</button>
+</div>

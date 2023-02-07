@@ -1,0 +1,13 @@
+<h2>Heroes Destacados</h2>
+<ul class="flex">
+  <li *ngFor="let heroeDeLaLista of heroes">
+    <a routerLink="/detail/{{ heroeDeLaLista.id }}">
+      <div>
+        <img [src]="heroeDeLaLista.thumbnail.path+heroeDeLaLista.thumbnail.extension" alt="">
+      </div>
+      <div>{{heroeDeLaLista.id}}: {{heroeDeLaLista.name}}</div>
+    </a>
+
+  </li>
+</ul>
+<app-hero-search></app-hero-search>

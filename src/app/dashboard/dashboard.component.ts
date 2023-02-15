@@ -11,6 +11,6 @@ export class DashboardComponent {
   public heroes: Hero[] = [];
   constructor(private heroService: HeroService) { }
   ngOnInit(): void {
-    this.heroService.getHeroes().subscribe(heroes => { this.heroes = heroes.slice(0, 10); });
+    this.heroService.getHeroesRand().subscribe(heroes => { this.heroes = heroes.slice(0, 10); });
   }
 }

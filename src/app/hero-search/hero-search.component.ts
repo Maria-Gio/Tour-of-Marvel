@@ -21,9 +21,9 @@ export class HeroSearchComponent implements OnInit {
       distinctUntilChanged(),
       switchMap(term => {
         return this.heroService.searchHeroes(term);
-
       })
     )
+    console.log(this.heroesFound$);
   }
   public search(value: string) {
     this.searchTerm.next(value);

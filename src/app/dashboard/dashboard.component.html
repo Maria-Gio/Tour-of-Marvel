@@ -1,13 +1,28 @@
-<h2>Heroes Destacados</h2>
-<ul class="flex">
-  <li *ngFor="let heroeDeLaLista of heroes">
-    <a routerLink="/detail/{{ heroeDeLaLista.id }}">
-      <div>
-        <img [src]="heroeDeLaLista.thumbnail.path+heroeDeLaLista.thumbnail.extension" alt="">
-      </div>
-      <div>{{heroeDeLaLista.id}}: {{heroeDeLaLista.name}}</div>
-    </a>
+<div class="pt-[12rem] md:pt-[11.5rem] flex  items-center justify-center  w-full bg-gray-200 ">
+  <h2 class="text-3xl md:text-4xl font-bangers ">Heroes Destacados</h2>
+</div>
+<app-hero-search></app-hero-search>
+<ul class="flex flex-col  justify-center md:items-center overflow-y-scroll">
+  <li *ngFor="let heroeDeLaLista of heroes" class="w-full h-full">
+
+    <div class="relative w-full  h-full md:flex md:justify-center md:items-center">
+      <a routerLink="/detail/{{ heroeDeLaLista.id }}" class="md:w-[90%] ">
+        <div>
+          <img [src]="heroeDeLaLista.thumbnail.path+'.'+heroeDeLaLista.thumbnail.extension"
+            class="w-full h-96  md:h-full  " alt="">
+        </div>
+        <div class="absolute left-4  md:left-10 top-2 text-white [text-shadow:_1px_1px_4px_black;] h-full w-full">
+          <div>
+            <p class="text-3xl md:text-5xl">{{heroeDeLaLista.id}}</p>
+          </div>
+          <div>
+            <p class=" text-xl md:text-5xl">{{heroeDeLaLista.name}}</p>
+          </div>
+
+        </div>
+      </a>
+    </div>
+
 
   </li>
 </ul>
-<app-hero-search></app-hero-search>

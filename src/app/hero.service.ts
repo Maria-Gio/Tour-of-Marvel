@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, filter } from 'rxjs';
+import { catchError, map, Observable, of, filter, from } from 'rxjs';
 import { Hero } from './hero';
 //Estudiar inyecciond de dependencias
 @Injectable({
@@ -21,9 +21,9 @@ export class HeroService {
   }
   //Hace una llamada a la api para devolver todos los heroes, como es una operacion asincrona, devuelve un Observavle
 
-  public getHeroes(): Observable<Hero[]> {
-    const rndNum = Math.floor(Math.random() * 1452) + 1;
-    const url = this.heroesURL + "?offset=" + rndNum + "&limit=100" + "&ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
+  public getHeroes(offset: number, limit: number): Observable<Hero[]> {
+
+    const url = this.heroesURL + "?offset=" + offset * 20 + "&limit=" + limit + "&ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
     console.log(url);
     // return of(HEROES);
     return this.http.get<Hero[]>(url).pipe(catchError(e => {
@@ -34,6 +34,17 @@ export class HeroService {
 
 
 
+  }
+  //VIEJO GET HEROES
+  public getHeroesRand(): Observable<Hero[]> {
+    const rndNum = Math.floor(Math.random() * 1452) + 1;
+    const url = this.heroesURL + "?offset=" + rndNum + "&limit=20" + "&ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
+    console.log(url);
+    // return of(HEROES);
+    return this.http.get<Hero[]>(url).pipe(catchError(e => {
+      console.error(e);
+      return [];
+    }), map(result => result['data']['results']))
   }
   public getHeroeById(id: number): Observable<Hero> {
     //Este metodo find, busca el heroe el cual su id coincide con la id que mandamos
@@ -51,30 +62,25 @@ export class HeroService {
     return this.http.put<unknown>(`${this.heroesURL}/${hero.id}`, hero);
   }
   public searchHeroes(text: string): Observable<Hero[]> {
-    const url = this.heroesURL + "?" + "&ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
+    // const url = this.heroesURL + "?" + "&ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
+    const url = this.heroesURL + "?" +"nameStartsWith="+text+ "&limit=100&ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
+
+
     if (!text.trim()) {
       return of([]);
     }
-    console.log('hago peticion con ', text);
-    return this.getHeroes().pipe(map(heroes => heroes.filter(hero => hero.name.toLocaleLowerCase().startsWith(text.toLowerCase()))))
+
+    return this.http.get<Hero[]>(url).pipe(catchError(e => {
+      console.error(e);
+      return [];
+    }), map(result => result['data']['results']))
+
   }
-  // public getPageHero(page: number): Observable<Hero[]> {
-  //   //page:1
-  //   //
+  public getComics(url:string){
 
-  //   let offset = Donde empieza, osea, el numero de la pagina, y 20 mas;
-  //   const url = this.heroesURL + "?offset=" + offset + "&limit=100" + "&ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
-  //   console.log(url);
-  //   // return of(HEROES);
-  //   return this.http.get<Hero[]>(url).pipe(catchError(e => {
-  //     console.error(e);
-  //     return [];
-  //   }), map(result => result['data']['results']))
+  }
 
-
-
-
-  // }
 
 
 }
+

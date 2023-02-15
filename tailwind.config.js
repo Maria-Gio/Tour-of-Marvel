@@ -7,7 +7,10 @@ module.exports = {
     extend: {
       backgroundImage: theme => ({
         'heroesBackground': "url('./assets/background.jpg')",
-      })
+      }),
+      fontFamily: {
+        'bangers': ['Bangers'],
+      }
 
     },
     plugins: [],

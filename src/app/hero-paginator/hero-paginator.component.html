@@ -1,1 +1,16 @@
-<p>hero-paginator works!</p>
+<div class="sticky bottom-0 flex justify-center  bg-white/20 w-full py-1 md:py-2">
+  <div class="flex rounded-full gap-1 items-center bg-red-600/70"> <button (click)=prevPage() class=""><img
+        src="../assets/flecha.png" class="md:h-8" alt=""></button>
+    <p class=" md:text-xl">{{ this.p }} of {{ this.total }} </p>
+    <button (click)=nextPage() class=" rounded-full active:bg-red-300"><img src="../assets/flecha.png"
+        class="rotate-180 md:h-8" alt=""></button>
+
+  </div>
+
+  <select class="flex flex-col-reverse md:w-12 md:text-xl items-center ml-3" #limitSelector (change)="newLimit(+limitSelector.value)">
+
+    <option *ngFor=" let limit of limitValues" [value]="limit">{{limit}}</option>
+
+  </select>
+
+</div>

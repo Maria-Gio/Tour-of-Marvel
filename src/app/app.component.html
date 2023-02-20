@@ -1,17 +1,17 @@
-<div class="fixed z-50 w-full">
-  <header id="header" class="flex justify-center flex-col bg-heroesBackground h-32 items-center md:h-[8rem] md:w-full">
+<div class="fixed lg:relative  top-0 z-50 w-full">
+  <header id="header" class="flex justify-center flex-col bg-heroesBackground h-32 items-center md:h-[8rem] lg:h-[8rem] md:w-full">
     <div class="w-full h-fit flex items-center justify-center mb-[-1.3rem]">
-      <a href="https://www.marvel.com/" class="flex justify-center items-center w-full"><img src="../assets/logo.png" class="w-full h-[65%] md:h-[8rem] md:py-2 md:w-[85%]"  alt=""></a>
+      <a href="https://www.marvel.com/" class="flex justify-center items-center w-full"><img src="../assets/logo.png" class="w-full h-[65%] md:h-[8rem] lg:w-[40%] lg:h-[7rem] md:py-2 md:w-[85%]"  alt=""></a>
     </div>
-    <div class="w-full  h-fit flex items-center justify-end pt-3.5  md:py-1 pr-[2.8rem] md:pr-[3.4rem]">
+    <div class="w-full  h-fit flex items-center justify-end pt-3.5  md:py-1 pr-[2.8rem] md:pr-[3.4rem] lg:pr-[20rem]">
       <h1 class="text-xl text-white [text-shadow:_1px_1px_4px_black;] font-bangers md:text-lg">{{title}}</h1>
     </div>
 
   </header>
-  <div class="h-fit ">
-    <nav class="flex  bg-black ">
+  <div class="h-fit  ">
+    <nav class="flex  bg-black shadow-lg shadow-slate-800 ">
 
-      <a routerLink="heroes" [routerLinkActive]="['bg-red-600']"
+      <a routerLink="heroes"  [routerLinkActive]="['bg-red-600']"
         class=" font-bangers tracking-wider md:tracking-widest text-xl md:text-3xl font-medium  text-white text-center w-[50%] p-2 ">Heroes</a>
 
 

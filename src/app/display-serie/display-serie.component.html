@@ -1,0 +1,17 @@
+<div *ngIf="serie" class="pt-[10.7rem] lg:pt-0 w-full h-fit bg-black">
+  <div class="  bg-red-800/70   z-50 shadow-lg shadow-red-700 bg-opacity-70 p-4 w-full flex justify-between text-center items-center px-3 md:pt-6 md:px-7 lg:pt-4 lg:px-10">
+    <div class="text-white text-lg lg:text-xl [text-shadow:_1px_1px_4px_black;]  max-w-[80%] font-semibold">{{this.serie.title}}</div>
+    <div class="text-white text-xs lg:text-lg [text-shadow:_1px_1px_4px_black;] max-w-[40%] ">
+      <p> {{this.serie.startYear}} to {{this.serie.endYear}}</p>
+    </div>
+  </div>
+  <div class="h-fit flex justify-center items-center pt-3 z-50">
+    <img src="{{this.serie.thumbnail.path}}.{{this.serie.thumbnail.extension }}" class="z-10  w-full  md:w-[70%] lg:w-[40%] h-[25rem] object-fill md:h-[35rem] border-solid border-t-2 border-black md:border-t-" alt="">
+  </div>
+
+  <div  *ngIf="this.serie.description != ''" class="text-white text-justify p-3 bg-slate-800/50 lg:text-lg" > {{this.serie.description}}</div>
+
+  <div class="fixed bottom-1 md:bottom-2 right-1 md:right-2 flex gap-3 rotate-180 rounded-full p-1 bg-white/40">
+    <button (click)="irPatras()"><img src="../assets/flechaCool.png" class="md:h-[55px]" alt=""></button>
+  </div>
+</div>

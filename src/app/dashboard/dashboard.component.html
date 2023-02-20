@@ -1,22 +1,27 @@
-<div class="pt-[12rem] md:pt-[11.5rem] flex  items-center justify-center  w-full bg-gray-200 ">
-  <h2 class="text-3xl md:text-4xl font-bangers ">Heroes Destacados</h2>
+<div
+  class="  lg:z-40 top-0 pt-[11.2rem] md:pt-[11.7rem] lg:pt-1 md:pb-1 flex  items-center justify-center  w-full bg-gray-200 ">
+  <h2 class="text-3xl md:text-4xl lg:text-5xl lg:py-1 font-bangers ">Heroes Destacados</h2>
+
 </div>
 <app-hero-search></app-hero-search>
-<ul class="flex flex-col  justify-center md:items-center overflow-y-scroll">
+
+<ul
+  class="flex  flex-col lg:flex-row justify-center lg:justify-start lg:pl-4 md:items-center overflow-y-scroll lg:overflow-x-scroll  lg:pb-3  lg:h-full lg:w-full lg:gap-8  lg:pt-[1rem] bg-slate-900 md:pt-3 ">
   <li *ngFor="let heroeDeLaLista of heroes" class="w-full h-full">
 
-    <div class="relative w-full  h-full md:flex md:justify-center md:items-center">
-      <a routerLink="/detail/{{ heroeDeLaLista.id }}" class="md:w-[90%] ">
-        <div>
+    <div class="relative w-full   h-full md:flex md:justify-center md:items-center  lg:h-fit lg:w-[30rem]  ">
+      <a routerLink="/detail/{{ heroeDeLaLista.id }}" class="md:w-[70%] lg:w-full ">
+        <div class="lg:w-full lg:h-fit">
           <img [src]="heroeDeLaLista.thumbnail.path+'.'+heroeDeLaLista.thumbnail.extension"
-            class="w-full h-96  md:h-full  " alt="">
+            class="w-full h-96  md:h-full shadow-xl lg:h-[32rem]  shadow-slate-300 lg:shadow-slate-400" alt="">
         </div>
-        <div class="absolute left-4  md:left-10 top-2 text-white [text-shadow:_1px_1px_4px_black;] h-full w-full">
+        <div
+          class="absolute left-4 lg:left-2 lg:z-50 md:left-32 top-2  text-white [text-shadow:_1px_1px_4px_black;] h-full w-full lg:h-fit">
           <div>
-            <p class="text-3xl md:text-5xl">{{heroeDeLaLista.id}}</p>
+            <p class="text-3xl md:text-5xl ">{{heroeDeLaLista.id}}</p>
           </div>
           <div>
-            <p class=" text-xl md:text-5xl">{{heroeDeLaLista.name}}</p>
+            <p class=" text-xl md:text-5xl  max-w-[530px]">{{heroeDeLaLista.name}}</p>
           </div>
 
         </div>

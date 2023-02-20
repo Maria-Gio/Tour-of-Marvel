@@ -1,46 +1,57 @@
-<div *ngIf="selectedHero" class="pt-[10.75rem] overflow-y-scroll bg-gray-300">
+<div *ngIf="selectedHero" class="pt-[10.75rem] lg:pt-0 overflow-y-scroll bg-gray-300">
 
-  <div class="relative">
-    <img [src]="image" class="  w-full h-full border-solid border-t-2 border-black">
-    <div *ngIf="selectedHero.description != ''" class=" h-full absolute top-0 bg-slate-600/90 opacity-0 hover:opacity-100">
-      <p class="italic p-2 text-lg ">"{{ selectedHero.description }}"</p>
+  <div class="relative flex justify-center bg-slate-900 ">
+    <img [src]="image"
+      class="  w-full  md:w-[70%] lg:w-[40%] h-[25rem] object-fill md:h-[35rem] border-solid border-t-2 border-black">
+    <div *ngIf="selectedHero.description != ''"
+      class=" h-full lg:w-[40%] flex md:w-[70%]  items-center absolute top-0 text-center bg-slate-600/90 opacity-0 hover:opacity-100">
+      <p class="italic p-2 text-lg  ">"{{ selectedHero.description }}"</p>
     </div>
   </div>
 
-  <div class="bg-red-600 font-bangers tracking-widest text-2xl p-2 h-9 flex items-center  justify-center  gap-5">
-    <p class="text-xl">{{selectedHero.id}}</p>
-    <p class="text-white text-center text-xl">{{ selectedHero.name }}</p>
+  <div
+    class="bg-red-600 font-bangers tracking-widest  drop-shadow-lg shadow-slate-700text-2xl p-2 h-9 md:h-11 flex items-center  justify-center  gap-5">
+    <p class="text-xl md:text-2xl">{{selectedHero.id}}</p>
+    <p class="text-white text-center text-xl md:text-3xl">{{ selectedHero.name }}</p>
   </div>
 
-  <div class="bg-gray-700/75 flex h-full gap-14  justify-center">
+  <div class="bg-gray-700/75 flex h-full gap-14 md:gap-20  justify-center">
 
     <div *ngIf="selectedHero.comics.available!=0">
       <button (click)="showComic()" class="active:invert h-full w-full"><img src="../assets/comic.png"
-          class="h-14"></button>
+          class="h-14 md:h-16"></button>
 
     </div>
     <div *ngIf="selectedHero.series.available!=0">
       <button (click)="showSerie()" id="botonSerie" class="active:invert h-full w-full"> <img src="../assets/tv.png"
-          class="h-14"></button>
+          class="h-14 md:h-16"></button>
 
     </div>
 
   </div>
   <div *ngIf="this.showComics===true" class="bg-slate-300">
     <ul class="flex flex-col ">
-      <li *ngFor="let item of selectedHero.comics.items" class="p-1 border-solid border-b-2 border-gray-600/60 ">{{
-        item.name }}</li>
+      <li *ngFor="let item of selectedHero.comics.items"
+        class="p-1 md:p-2 border-solid border-b-2 md:text-xl border-gray-600/60 hover:bg-slate-400">
+        <a (click)="goToSerie(item.resourceURI)">{{item.name }}</a>
+      </li>
     </ul>
   </div>
   <div *ngIf="this.showSeries===true">
     <ul>
-      <li *ngFor="let item of selectedHero.series.items" class="p-1 border-solid border-b-2 border-gray-600/60 ">{{
-        item.name }}</li>
+      <li *ngFor="let item of selectedHero.series.items"
+        class="p-1 md:p-2 border-solid border-b-2 md:text-xl  border-gray-600/60 ">
+        <a (click)="goToComic(item.resourceURI)">
+          {{item.name }}
+        </a>
+      </li>
+
     </ul>
   </div>
 
 
-  <div class="fixed bottom-0 right-0 flex gap-3 rotate-180 rounded-full p-1 bg-white/40">
-    <button (click)="irPatras()"><img src="../assets/flechaCool.png" alt=""></button>
+
+  <div class="fixed bottom-1 md:bottom-2 right-1 md:right-2 flex gap-3 rotate-180 rounded-full p-1 bg-white/40">
+    <button (click)="irPatras()"><img src="../assets/flechaCool.png" class="md:h-[55px]" alt=""></button>
   </div>
 </div>

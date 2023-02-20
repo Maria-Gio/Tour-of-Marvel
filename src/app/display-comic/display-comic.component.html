@@ -1,0 +1,18 @@
+<div *ngIf="comic" class="pt-[10.7rem] lg:pt-0 w-full h-fit bg-black">
+  <div
+    class="bg-red-800/70   z-50 shadow-lg shadow-red-700 bg-opacity-70 p-4 w-full flex justify-center text-center items-center px-3 md:pt-6 lg:pt-4 ">
+    <div class="text-white text-lg lg:text-xl [text-shadow:_1px_1px_4px_black;] font-semibold w-full">{{this.comic.title}}</div>
+
+  </div>
+  <div class="h-fit flex justify-center items-center pt-3">
+    <img src="{{this.comic.thumbnail.path}}.{{this.comic.thumbnail.extension }}" class=" w-full  md:w-[70%] lg:w-[40%] h-[25rem] object-fill md:h-[35rem] border-solid border-t-2 border-black" alt="">
+  </div>
+
+  <div *ngIf="this.comic.description != ''" class="text-white lg:text-lg text-justify p-3 bg-slate-800/50">
+    <p>{{this.comic.description}}</p>
+  </div>
+
+  <div class="fixed bottom-1 md:bottom-2 right-1 md:right-2 flex gap-3 rotate-180 rounded-full p-1 bg-white/40">
+    <button (click)="irPatras()"><img src="../assets/flechaCool.png" class="md:h-[55px]" alt=""></button>
+  </div>
+</div>

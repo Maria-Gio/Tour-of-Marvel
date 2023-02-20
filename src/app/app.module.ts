@@ -9,6 +9,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { HeroPaginatorComponent } from './hero-paginator/hero-paginator.component';
+import {DisplaySerieComponent  } from './display-serie/display-serie.component';
+import { DisplayComicComponent } from './display-comic/display-comic.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { HeroPaginatorComponent } from './hero-paginator/hero-paginator.componen
     HeroDetailComponent,
     DashboardComponent,
     HeroSearchComponent,
-    HeroPaginatorComponent
+    HeroPaginatorComponent,
+    DisplayComicComponent,
+    DisplaySerieComponent
   ],
   imports: [
     BrowserModule,

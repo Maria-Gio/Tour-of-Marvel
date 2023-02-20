@@ -15,18 +15,15 @@ export class HeroSearchComponent implements OnInit {
   constructor(private heroService: HeroService) { }
   ngOnInit(): void {
     this.heroesFound$ = this.searchTerm.pipe(
-      // completa el observable anterior y devuelve otro observable
 
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(term => {
-        return this.heroService.searchHeroes(term);
+      switchMap(text => {
+        return this.heroService.searchHeroes(text);
       })
     )
-    console.log(this.heroesFound$);
   }
   public search(value: string) {
     this.searchTerm.next(value);
   }
-  // this.heroesFound$=this.heroService.searchHeroes(value)}
 }

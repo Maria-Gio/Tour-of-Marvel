@@ -16,20 +16,14 @@ export class HeroService {
   private powerfulKey: string = "?ts=hero&apikey=" + this.apikey + "&hash=" + this.hash;
 
 
-  //Para coger info entre componentes, se crea la variable
-  //private variable :String;
-  //Y e instanciamos el constructor en los componentes a usar.
 
   constructor(private http: HttpClient) {
 
   }
-  //Hace una llamada a la api para devolver todos los heroes, como es una operacion asincrona, devuelve un Observavle
 
   public getHeroes(offset: number, limit: number): Observable<Hero[]> {
 
     const url = this.heroesURL + "?offset=" + offset * 20 + "&limit=" + limit + this.powerfulKey;
-    console.log(url);
-    // return of(HEROES);
     return this.http.get<Hero[]>(url).pipe(catchError(e => {
       console.error(e);
       return [];
@@ -43,18 +37,13 @@ export class HeroService {
   public getHeroesRand(): Observable<Hero[]> {
     const rndNum = Math.floor(Math.random() * 1452) + 1;
     const url = this.heroesURL + "?offset=" + rndNum + "&limit=20" + this.powerfulKey;
-    console.log(url);
-    // return of(HEROES);
     return this.http.get<Hero[]>(url).pipe(catchError(e => {
       console.error(e);
       return [];
     }), map(result => result['data']['results']))
   }
   public getHeroeById(id: number): Observable<Hero> {
-    //Este metodo find, busca el heroe el cual su id coincide con la id que mandamos
     const url = this.heroesURL + "/" + id + this.powerfulKey;
-    console.log(url);
-    //find devuelve un objeto o null y filter un array.
 
     return this.http.get<Hero>(url).pipe(catchError(e => {
       console.error(e);
@@ -75,7 +64,7 @@ export class HeroService {
   public getComic(id: number): Observable<displayComic> {
 
     const url = this.comicURL+'/'+id+ this.powerfulKey;
-    console.log(url);
+
 
     return this.http.get<displayComic[]>(url).pipe(catchError(e => {
       console.error(e);
